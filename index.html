@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Brevno — дома из бруса и оцилиндрованного бревна</title>
+  <!-- Макет Figma: https://www.figma.com/design/3cBoiMbZwjkKeHGmlboH6O/ node19433:2461 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <section class="hero">
+    <div class="hero__top">
+      <header class="hero__header">
+        <div class="header__inner container">
+          <a class="logo logo--sm" href="#">BREVNO</a>
+          <nav class="nav" aria-label="Основное меню">
+            <a href="#about">О нас</a>
+            <a href="#advantages">Преимущества</a>
+            <a href="#collection">Проекты</a>
+          </nav>
+          <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
+            <span class="lang-toggle__track">
+              <span class="lang-toggle__slot" id="slotEn" data-lang="en">
+                <span class="lang-toggle__ring" aria-hidden="true"></span>
+                <span class="lang-toggle__label">En</span>
+              </span>
+              <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
+                <span class="lang-toggle__ring" aria-hidden="true"></span>
+                <span class="lang-toggle__label">Ru</span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </header>
+      <div class="hero__title-block container">
+        <div class="hero__title-wrap">
+          <h1 class="hero__title">BREVNO</h1>
+          <div class="hero__keywords">
+            <span data-i18n="kw1">НАТУРАЛЬНО</span>
+            <span data-i18n="kw2">ТЕПЛО</span>
+            <span data-i18n="kw3">ДОЛГОВЕЧНО</span>
+            <span data-i18n="kw4">БЫСТРО</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero__image-wrap">
+      <img
+        src="images/Rectangle%2040135.png"
+        alt=""
+        class="hero__img"
+        width="1920"
+        height="1080"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="section section--process" id="about">
+    <div class="container">
+      <div class="section--process__intro">
+        <p class="section__label section__label--on-dark">
+          <span class="section__label-slash">/</span><span data-i18n="processLabel">ПОСЛЕДОВАТЕЛЬНОСТЬ</span>
+        </p>
+        <h2 class="section__heading section__heading--process">
+          <span class="section__heading-line" data-i18n="processH1">ПУТЬ К УСПЕШНОМУ</span>
+          <span class="section__heading-line" data-i18n="processH2">ЗАВЕРШЕНИЮ</span>
+        </h2>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <!-- Сетка 5×2: только карточки; пустые слоты — без DOM (чёрные промежутки через gap).
+         r1: 1 · · 2 · 3 · фото | r2: · 4 · фото · · 5 -->
+    <div class="container process">
+      <div class="process__grid">
+        <article class="process__cell process__cell--step process__cell--1">
+          <span class="process__num">1</span>
+          <p class="process__text" data-i18n="processStep1">Рубим лес (кедр, сосна, лиственница) в зависимости от Вашего предпочтения</p>
+        </article>
+        <article class="process__cell process__cell--step process__cell--2">
+          <span class="process__num">2</span>
+          <p class="process__text" data-i18n="processStep2">Оцилиндровываем бревно</p>
+        </article>
+        <article class="process__cell process__cell--step process__cell--3">
+          <span class="process__num">3</span>
+          <p class="process__text" data-i18n="processStep3">Собираем дом на специальной площадке</p>
+        </article>
+        <div class="process__cell process__cell--photo process__cell--photo-a">
+          <img src="images/Rectangle%2040036.png" alt="" width="800" height="800" loading="lazy" decoding="async" />
+        </div>
+        <article class="process__cell process__cell--step process__cell--4">
+          <span class="process__num">4</span>
+          <p class="process__text" data-i18n="processStep4">Разбираем дом и везём на Ваш участок в течение 2-х дней</p>
+        </article>
+        <div class="process__cell process__cell--photo process__cell--photo-b">
+          <img src="images/11.png" alt="" width="800" height="800" loading="lazy" decoding="async" />
+        </div>
+        <article class="process__cell process__cell--step process__cell--5">
+          <span class="process__num">5</span>
+          <p class="process__text" data-i18n="processStep5">Через 3 недели дом готов к проживанию</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--services" id="services">
+    <div class="container services-head">
+      <p class="section__label section__label--on-dark services-head__label">
+        <span class="section__label-slash">/</span><span data-i18n="productLabel">О ПРОДУКТЕ</span>
+      </p>
+      <h2 class="services-head__title" data-i18n="servicesHeading">НАШИ УСЛУГИ</h2>
+      <span class="services-head__spacer" aria-hidden="true"></span>
+    </div>
+    <div class="divider divider--muted"></div>
+    <div class="container">
+      <div class="services-acc" id="servicesAcc">
+        <details class="services-acc__item">
+          <summary class="services-acc__summary">
+            <span class="services-acc__heading"><span class="services-acc__num">01</span> ПРОЕКТИРОВАНИЕ</span>
+            <span class="services-acc__house" aria-hidden="true">
+              <svg class="services-acc__house-svg" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18L22 9L34 18V34H10V18Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="miter" />
+                <rect x="17" y="24" width="10" height="10" stroke="currentColor" stroke-width="1.2" />
+                <g class="services-acc__pm">
+                  <line x1="22" y1="20" x2="22" y2="28" stroke="currentColor" stroke-width="1.2" class="services-acc__pm-v" />
+                  <line x1="18" y1="24" x2="26" y2="24" stroke="currentColor" stroke-width="1.2" />
+                </g>
+              </svg>
+            </span>
+          </summary>
+          <div class="services-acc__panel services-acc__panel--rich">
+            <p class="services-acc__kicker">
+              ИНДИВИДУАЛЬНЫЕ И ТИПОВЫЕ ПРОЕКТЫ: ПЛАНИРОВКИ, УЗЛЫ И КОМПЛЕКТАЦИЯ С УЧЁТОМ УЧАСТКА, КЛИМАТА И ВАШЕГО БЮДЖЕТА.
+            </p>
+            <div class="services-acc__ellipse">
+              <img src="images/Проект.jpg" alt="" width="400" height="400" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </details>
+
+        <details class="services-acc__item" open>
+          <summary class="services-acc__summary">
+            <span class="services-acc__heading"><span class="services-acc__num">02</span> ДИЗАЙН ПРОЕКТ</span>
+            <span class="services-acc__house" aria-hidden="true">
+              <svg class="services-acc__house-svg" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18L22 9L34 18V34H10V18Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="miter" />
+                <rect x="17" y="24" width="10" height="10" stroke="currentColor" stroke-width="1.2" />
+                <g class="services-acc__pm">
+                  <line x1="22" y1="20" x2="22" y2="28" stroke="currentColor" stroke-width="1.2" class="services-acc__pm-v" />
+                  <line x1="18" y1="24" x2="26" y2="24" stroke="currentColor" stroke-width="1.2" />
+                </g>
+              </svg>
+            </span>
+          </summary>
+          <div class="services-acc__panel services-acc__panel--rich">
+            <p class="services-acc__kicker">
+              НАША КОМПАНИЯ СОЗДАЕТ ДИЗАЙНЫ ИНТЕРЬЕРА, КОТОРЫЕ ИДЕАЛЬНО ПОДОЙДУТ ПОД ЗАПРОСЫ КОНКРЕТНОГО КЛИЕНТА.
+            </p>
+            <div class="services-acc__ellipse">
+              <img src="images/дизайн.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </details>
+
+        <details class="services-acc__item">
+          <summary class="services-acc__summary">
+            <span class="services-acc__heading"><span class="services-acc__num">03</span> СБОРКА СРУБА</span>
+            <span class="services-acc__house" aria-hidden="true">
+              <svg class="services-acc__house-svg" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18L22 9L34 18V34H10V18Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="miter" />
+                <rect x="17" y="24" width="10" height="10" stroke="currentColor" stroke-width="1.2" />
+                <g class="services-acc__pm">
+                  <line x1="22" y1="20" x2="22" y2="28" stroke="currentColor" stroke-width="1.2" class="services-acc__pm-v" />
+                  <line x1="18" y1="24" x2="26" y2="24" stroke="currentColor" stroke-width="1.2" />
+                </g>
+              </svg>
+            </span>
+          </summary>
+          <div class="services-acc__panel services-acc__panel--rich">
+            <p class="services-acc__kicker">
+              СБОРКА СРУБА НА ПЛОЩАДКЕ: СХОДНОСТЬ УЗЛОВ, ГЕОМЕТРИЯ СТЕН И МАРКИРОВКА КАЖДОГО БРЕВНА ПЕРЕД ОТГРУЗКОЙ НА УЧАСТОК.
+            </p>
+            <div class="services-acc__ellipse">
+              <img src="images/сборка.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </details>
+
+        <details class="services-acc__item">
+          <summary class="services-acc__summary">
+            <span class="services-acc__heading"><span class="services-acc__num">04</span> ВНУТРЕННЯЯ ОТДЕЛКА</span>
+            <span class="services-acc__house" aria-hidden="true">
+              <svg class="services-acc__house-svg" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18L22 9L34 18V34H10V18Z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="miter" />
+                <rect x="17" y="24" width="10" height="10" stroke="currentColor" stroke-width="1.2" />
+                <g class="services-acc__pm">
+                  <line x1="22" y1="20" x2="22" y2="28" stroke="currentColor" stroke-width="1.2" class="services-acc__pm-v" />
+                  <line x1="18" y1="24" x2="26" y2="24" stroke="currentColor" stroke-width="1.2" />
+                </g>
+              </svg>
+            </span>
+          </summary>
+          <div class="services-acc__panel services-acc__panel--rich">
+            <p class="services-acc__kicker">
+              ИНТЕРЬЕРЫ И ОТДЕЛКА С УЧЁТОМ ДЕРЕВА: ПОКРЫТИЯ, ИНЖЕНЕРИЯ И ДЕКОР В СОГЛАСОВАННЫЕ СРОКИ И ПОД ВАШ СТИЛЬ.
+            </p>
+            <div class="services-acc__ellipse">
+              <img src="images/отделка.webp" alt="" width="400" height="400" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--production" id="production">
+    <div class="container production-head">
+      <p class="section__label section__label--on-dark production-head__label">
+        <span class="section__label-slash">/</span><span data-i18n="prodLabel">ПРОЦЕСС ОЦИЛИНДРОВКИ</span>
+      </p>
+      <h2 class="production-head__title" data-i18n="prodHeading">КАК МЫ ГОТОВИМ БРЁВНА</h2>
+      <span class="production-head__spacer" aria-hidden="true"></span>
+    </div>
+    <div class="divider divider--muted"></div>
+    <div class="production__hero">
+      <img
+        id="productionHeroImage"
+        src="images/Оцилиндровка.png"
+        alt=""
+        width="1920"
+        height="1080"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+      />
+    </div>
+    <div class="production-stepper-outer">
+      <div
+        class="production-stepper"
+        id="productionStepper"
+        role="region"
+        aria-roledescription="карусель"
+        aria-label="Этапы подготовки брёвен. Переключение стрелками."
+      >
+        <div class="production-stepper__shell">
+          <button type="button" class="production-stepper__arrow production-stepper__arrow--prev" id="productionPrev" aria-controls="productionViewport" aria-label="Предыдущий этап">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <div class="production-stepper__viewport" id="productionViewport">
+            <div class="production-stepper__track" id="productionTrack">
+            <article class="production-slide is-active" data-step="1" data-hero-img="images/Оцилиндровка.png">
+              <div class="production-slide__icon-row">
+                <img class="production-slide__stump" src="images/Пенек.svg" alt="" width="30" height="40" decoding="async" draggable="false" />
+              </div>
+              <span class="production-slide__num">01</span>
+              <p class="production-slide__text">
+                НА СПЕЦИАЛЬНЫХ СТАНКАХ СТВОЛ ОЧИЩАЮТ ОТ ВЕРХНИХ СЛОЕВ — КОРЫ И ЛУБА.
+              </p>
+            </article>
+            <article class="production-slide" data-step="2" data-hero-img="images/Оцилиндровка 1.jpg">
+              <div class="production-slide__icon-row">
+                <img class="production-slide__stump" src="images/Пенек.svg" alt="" width="30" height="40" decoding="async" draggable="false" />
+              </div>
+              <span class="production-slide__num">02</span>
+              <p class="production-slide__text">
+                ПРОИСХОДИТ ОЦИЛИНДРОВКА БРЕВНА, В ПРОЦЕССЕ КОТОРОЙ ДИАМЕТР ИЗДЕЛИЯ ПОДГОНЯЕТСЯ ПОД НУЖНЫЙ РАЗМЕР.
+              </p>
+            </article>
+            <article class="production-slide" data-step="3" data-hero-img="images/Шлифовка.jpg">
+              <div class="production-slide__icon-row">
+                <img class="production-slide__stump" src="images/Пенек.svg" alt="" width="30" height="40" decoding="async" draggable="false" />
+              </div>
+              <span class="production-slide__num">03</span>
+              <p class="production-slide__text">
+                ЗАГОТОВКИ ШЛИФУЮТСЯ В НЕСКОЛЬКО ЭТАПОВ, ПОДВЕРГАЮТСЯ СУШКЕ.
+              </p>
+            </article>
+            <article class="production-slide" data-step="4" data-hero-img="images/контроль геометрии.jpg">
+              <div class="production-slide__icon-row">
+                <img class="production-slide__stump" src="images/Пенек.svg" alt="" width="30" height="40" decoding="async" draggable="false" />
+              </div>
+              <span class="production-slide__num">04</span>
+              <p class="production-slide__text">
+                КОНТРОЛЬ ГЕОМЕТРИИ И ВЛАЖНОСТИ: ПРОФИЛЬ, ПАЗЫ И МАРКИРОВКА КАЖДОГО ЭЛЕМЕНТА ПЕРЕД УПАКОВКОЙ.
+              </p>
+            </article>
+            <article class="production-slide" data-step="5" data-hero-img="images/домокомплект.jpg">
+              <div class="production-slide__icon-row">
+                <img class="production-slide__stump" src="images/Пенек.svg" alt="" width="30" height="40" decoding="async" draggable="false" />
+              </div>
+              <span class="production-slide__num">05</span>
+              <p class="production-slide__text">
+                УПАКОВКА ДОМОКОМПЛЕКТА, СОПРОВОДИТЕЛЬНАЯ ДОКУМЕНТАЦИЯ И ОТГРУЗКА НА ВАШ УЧАСТОК В СОГЛАСОВАННЫЕ СРОКИ.
+              </p>
+            </article>
+            </div>
+          </div>
+          <button type="button" class="production-stepper__arrow production-stepper__arrow--next" id="productionNext" aria-controls="productionViewport" aria-label="Следующий этап">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--quote" id="quoteReveal">
+    <div class="container quote">
+      <blockquote class="quote__text">
+        <span class="quote__line">« НАША КОМПАНИЯ ПРЕДЛАГАЕТ КЛИЕНТАМ УНИКАЛЬНОЕ,</span>
+        <span class="quote__line">ЭКОЛОГИЧЕСКИ ЧИСТОЕ И ЭКОНОМИЧНОЕ ЖИЛЬЕ,</span>
+        <span class="quote__line">КОТОРОЕ ПРОСЛУЖИТ ДОЛГИЕ ГОДЫ</span>
+        <span class="quote__line">И ПРИДЕТСЯ ПО ВКУСУ ВСЕМ, КТО ЦЕНИТ</span>
+        <span class="quote__line">КРАСОТУ И НАТУРАЛЬНОСТЬ. »</span>
+      </blockquote>
+      <div class="quote__badge">
+        <img class="quote__badge-img" src="images/Спасов.png" alt="" width="56" height="56" loading="lazy" decoding="async" />
+        <span class="quote__badge-name">МАКСИМ СПАСОВ</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--usp" id="advantages">
+    <div class="container usp-head">
+      <p class="section__label section__label--on-dark usp-head__label">
+        <span class="section__label-slash">/</span><span data-i18n="uspLabel">ПРЕИМУЩЕСТВА</span>
+      </p>
+      <h2 class="usp-head__title">
+        <span class="usp-head__title-line" data-i18n="uspHeadingLine1">УНИКАЛЬНОСТЬ НАШЕЙ</span>
+        <span class="usp-head__title-line" data-i18n="uspHeadingLine2">КОМПАНИИ</span>
+      </h2>
+    </div>
+    <div class="divider divider--muted"></div>
+    <div class="usp-carousel-outer">
+      <div class="usp-carousel" id="uspCarousel">
+        <button type="button" class="usp-carousel__arrow usp-carousel__arrow--prev" id="uspPrev" aria-controls="uspViewport" aria-label="Предыдущая карточка">
+          <span aria-hidden="true">&#8249;</span>
+        </button>
+        <div class="usp-carousel__viewport" id="uspViewport">
+          <div class="usp-carousel__track" id="uspTrack">
+            <article class="usp-card">
+              <div class="usp-card__img">
+                <img src="images/30%2B.png" alt="" width="400" height="400" loading="lazy" decoding="async" draggable="false" />
+              </div>
+              <h3 class="usp-card__title">30+ СДЕЛАННЫХ ПРОЕКТОВ</h3>
+              <p class="usp-card__text">30+ завершённых проектов: опыт, качество, результат</p>
+            </article>
+            <article class="usp-card">
+              <div class="usp-card__img">
+                <img src="images/2007.png" alt="" width="400" height="400" loading="lazy" decoding="async" draggable="false" />
+              </div>
+              <h3 class="usp-card__title">РАБОТАЕМ С 2007 ГОДА</h3>
+              <p class="usp-card__text">Более десяти лет на рынке: профессионализм с 2007 года</p>
+            </article>
+            <article class="usp-card">
+              <div class="usp-card__img">
+                <img src="images/Гарантия.png" alt="" width="400" height="400" loading="lazy" decoding="async" draggable="false" />
+              </div>
+              <h3 class="usp-card__title">ГАРАНТИЙНОЕ ОБСЛУЖИВАНИЕ</h3>
+              <p class="usp-card__text">
+                Мы предоставляем гарантию на выполненные работы, что позволяет вам быть уверенными в качестве наших услуг
+              </p>
+            </article>
+            <article class="usp-card">
+              <div class="usp-card__img">
+                <img src="images/отделка-интерьер.png" alt="" width="1920" height="1080" loading="lazy" decoding="async" draggable="false" />
+              </div>
+              <h3 class="usp-card__title">УНИКАЛЬНЫЙ ДИЗАЙН</h3>
+              <p class="usp-card__text">
+                Компания по строительству бревенчатых домов может предложить клиентам индивидуальный дизайн, учитывая их пожелания и потребности.
+              </p>
+            </article>
+          </div>
+        </div>
+        <button type="button" class="usp-carousel__arrow usp-carousel__arrow--next" id="uspNext" aria-controls="uspViewport" aria-label="Следующая карточка">
+          <span aria-hidden="true">&#8250;</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--team" id="team">
+    <div class="container team-head">
+      <p class="section__label section__label--on-dark team-head__label">
+        <span class="section__label-slash">/</span><span data-i18n="teamLabel">КОМАНДА</span>
+      </p>
+      <h2 class="team-head__title" data-i18n="teamHeading">НАШИ СПЕЦИАЛИСТЫ</h2>
+      <span class="team-head__spacer" aria-hidden="true"></span>
+    </div>
+    <div class="divider divider--muted"></div>
+    <div class="container team">
+      <div class="team__left">
+        <div class="team__portrait" id="teamPortraitWrap">
+          <img
+            id="teamPortrait"
+            src="images/Дизайнер.jpg"
+            alt=""
+            width="720"
+            height="720"
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+        </div>
+        <p class="team__name" id="teamName">АННА ГУБЕНКО</p>
+      </div>
+      <ul class="team__roles" id="teamRoles">
+        <li>
+          <button
+            type="button"
+            data-src="images/Директор.jpg"
+            data-name="АЛЕКСАНДР СПАСОВ"
+          >
+            ДИРЕКТОР
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-src="images/Проектировщик.jpg"
+            data-name="МАКСИМ МОРОЗОВ"
+          >
+            ПРОЕКТИРОВЩИК
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-src="images/Дизайнер.jpg"
+            data-name="АННА ГУБЕНКО"
+            class="is-active"
+          >
+            ДИЗАЙНЕР
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-src="images/Администратор.jpg"
+            data-name="АЛЕКСЕЙ КРЫЛОВ"
+          >
+            АДМИНИСТРАТОР
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-src="images/Менеджер.jpg"
+            data-name="ДМИТРИЙ СЕМЁНОВ"
+          >
+            МЕНЕДЖЕР
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            data-src="images/Логист.jpg"
+            data-name="ИГОРЬ НИКИТИН"
+          >
+            ЛОГИСТ
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--catalog" id="collection">
+    <div class="container catalog-head">
+      <p class="section__label section__label--on-dark catalog-head__label">
+        <span class="section__label-slash">/</span><span data-i18n="catLabel">ПРОЕКТЫ</span>
+      </p>
+      <h2 class="catalog-head__title" data-i18n="catHeading">НАША КОЛЛЕКЦИЯ</h2>
+      <span class="catalog-head__spacer" aria-hidden="true"></span>
+    </div>
+    <div class="divider divider--muted"></div>
+    <div class="container catalog">
+      <table class="catalog__table">
+        <thead>
+          <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Дерево</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Проекты</th>
+          </tr>
+        </thead>
+        <tbody id="catalogRows">
+          <tr class="catalog-row is-open" data-catalog-row>
+            <td class="catalog__name">Лежнёво</td>
+            <td><span class="catalog__badge">Кедр</span></td>
+            <td class="catalog__year">2015</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/Дом%201.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Дом%202.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Дом%203.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="true" aria-label="Свернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">−</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr class="catalog-row" data-catalog-row>
+            <td class="catalog__name">Тайга</td>
+            <td><span class="catalog__badge">Лиственница</span></td>
+            <td class="catalog__year">2017</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/process-section.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Оцилиндровка.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/сборка.webp" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="false" aria-label="Развернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">+</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr class="catalog-row" data-catalog-row>
+            <td class="catalog__name">Москва</td>
+            <td><span class="catalog__badge">Сосна</span></td>
+            <td class="catalog__year">2018</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/отделка.webp" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/дизайн.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Проект.jpg" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="false" aria-label="Развернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">+</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr class="catalog-row" data-catalog-row>
+            <td class="catalog__name">Изба</td>
+            <td><span class="catalog__badge">Кедр</span></td>
+            <td class="catalog__year">2019</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/hero-full.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/hero-top.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/дизайн.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="false" aria-label="Развернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">+</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr class="catalog-row" data-catalog-row>
+            <td class="catalog__name">Царьград</td>
+            <td><span class="catalog__badge">Сосна</span></td>
+            <td class="catalog__year">2021</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/Гарантия.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Rectangle%2040036.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/Rectangle%2040135.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="false" aria-label="Развернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">+</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr class="catalog-row" data-catalog-row>
+            <td class="catalog__name">Самара</td>
+            <td><span class="catalog__badge">Кедр</span></td>
+            <td class="catalog__year">2023</td>
+            <td class="catalog__cell-projects">
+              <div class="catalog__project-inner">
+                <div class="catalog__thumbs">
+                  <img src="images/11.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/30%2B.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                  <img src="images/2007.png" alt="" width="120" height="86" loading="lazy" decoding="async" />
+                </div>
+                <button type="button" class="catalog__toggle" aria-expanded="false" aria-label="Развернуть строку">
+                  <span class="catalog__toggle-icon" aria-hidden="true">+</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn--primary catalog__more" data-i18n="showMore">ПОКАЗАТЬ БОЛЬШЕ</button>
+    </div>
+  </section>
+
+  <section class="section section--reviews" id="reviews" aria-labelledby="reviewsHeading">
+    <div class="reviews-cloud container">
+      <p class="reviews-hint-text sr-only" data-i18n="reviewsHint">Нажмите на портрет клиента, чтобы прочитать отзыв</p>
+      <div class="reviews-layout">
+        <div class="reviews-hero">
+          <div class="reviews-hero__side reviews-hero__side--left">
+            <button type="button" class="reviews-pick" data-review-index="0" aria-current="false" aria-label="Отзыв: Иван Л.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2050.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Иван Л.</span>
+            </button>
+            <button type="button" class="reviews-pick" data-review-index="1" aria-current="false" aria-label="Отзыв: Марина М.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2051.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Марина М.</span>
+            </button>
+            <button type="button" class="reviews-pick" data-review-index="2" aria-current="false" aria-label="Отзыв: Тарас К.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2052.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Тарас К.</span>
+            </button>
+            <button type="button" class="reviews-pick" data-review-index="3" aria-current="false" aria-label="Отзыв: Олег М.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2053.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Олег М.</span>
+            </button>
+          </div>
+
+          <h2 class="reviews-head__title" id="reviewsHeading">
+            <span class="reviews-head__line" data-i18n="reviewsLine1">50+</span>
+            <span class="reviews-head__line" data-i18n="reviewsLine2">СЧАСТЛИВЫХ</span>
+            <span class="reviews-head__line" data-i18n="reviewsLine3">КЛИЕНТОВ</span>
+          </h2>
+
+          <div class="reviews-hero__side reviews-hero__side--right">
+            <button type="button" class="reviews-pick" data-review-index="4" aria-current="false" aria-label="Отзыв: Павел А.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2054.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Павел А.</span>
+            </button>
+            <button type="button" class="reviews-pick" data-review-index="5" aria-current="false" aria-label="Отзыв: Михаил О.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%2055.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Михаил О.</span>
+            </button>
+            <button type="button" class="reviews-pick is-active" data-review-index="6" aria-current="true" aria-label="Отзыв: Иван Краснов">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%20553.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Иван К.</span>
+            </button>
+            <button type="button" class="reviews-pick" data-review-index="7" aria-current="false" aria-label="Отзыв: Павел Д.">
+              <span class="reviews-pick__fig">
+                <img src="images/Ellipse%20555.png" alt="" width="80" height="80" loading="lazy" decoding="async" draggable="false" />
+              </span>
+              <span class="reviews-pick__name">Павел Д.</span>
+            </button>
+          </div>
+
+          <div class="reviews-hint-arrow" aria-hidden="true">
+            <img src="images/Vector.svg" width="35" height="35" alt="" decoding="async" />
+          </div>
+        </div>
+        <div class="reviews-featured" id="reviewsFeatured" role="region" aria-live="polite" aria-label="Выбранный отзыв">
+          <div class="reviews-featured__top">
+            <div class="reviews-featured__avatar-wrap">
+              <img
+                id="reviewsFeaturedImg"
+                class="reviews-featured__avatar"
+                src="images/Ellipse%20553.png"
+                alt=""
+                width="72"
+                height="72"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+            <div class="reviews-featured__head">
+              <div class="reviews-featured__stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="reviews-featured__name" id="reviewsFeaturedName">Иван Краснов</p>
+            </div>
+          </div>
+          <blockquote class="reviews-featured__quote" id="reviewsFeaturedQuote">
+            Сотрудничество с вашей компанией построило нам мечту - уютный бревенчатый дом, в котором мы теперь живем. Спасибо за профессионализм, качество материалов и отличный сервис!
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--lead" id="contact" aria-labelledby="leadHeading">
+    <div class="container lead">
+      <div class="lead__col lead__col--left">
+        <p class="lead__label">
+          <span class="lead__label-slash">/</span><span data-i18n="leadLabel">ЗАКАЗАТЬ ЗВОНОК</span>
+        </p>
+        <h2 class="lead__title" id="leadHeading">
+          <span class="lead__title-line" data-i18n="leadLine1">ОСТАВЬТЕ ЗАЯВКУ</span>
+          <span class="lead__title-line" data-i18n="leadLine2">И ПОЛУЧИТЕ</span>
+          <span class="lead__title-line" data-i18n="leadLine3">ПОНЯТНУЮ</span>
+          <span class="lead__title-line" data-i18n="leadLine4">И ПОДРОБНУЮ</span>
+          <span class="lead__title-line" data-i18n="leadLine5">КОНСУЛЬТАЦИЮ</span>
+        </h2>
+      </div>
+      <div class="lead__divider" aria-hidden="true"></div>
+      <div class="lead__col lead__col--right">
+        <p class="lead__intro" data-i18n="leadIntro">
+          После общения с нами Вы будете иметь полное представление о предоставляемых услугах.
+        </p>
+        <form class="lead__form" id="leadForm" novalidate>
+          <p class="lead__form-status" id="leadFormStatus" role="status" aria-live="polite"></p>
+          <label class="sr-only" for="leadName">Имя</label>
+          <input
+            id="leadName"
+            name="name"
+            type="text"
+            data-i18n-placeholder="leadPhName"
+            placeholder="Ваше имя"
+            required
+            autocomplete="name"
+            maxlength="120"
+          />
+          <label class="sr-only" for="leadPhone">Телефон</label>
+          <input
+            id="leadPhone"
+            name="phone"
+            type="tel"
+            data-i18n-placeholder="leadPhPhone"
+            placeholder="Мобильный телефон"
+            required
+            autocomplete="tel"
+            maxlength="32"
+          />
+          <label class="sr-only" for="leadContact">Контакт</label>
+          <input
+            id="leadContact"
+            name="contact"
+            type="text"
+            data-i18n-placeholder="leadPhContact"
+            placeholder="Email или WhatsApp / Telegram"
+            autocomplete="email"
+            maxlength="200"
+          />
+          <label class="lead__consent">
+            <span class="lead__consent-box">
+              <input type="checkbox" name="consent" value="yes" class="lead__consent-input" required />
+              <span class="lead__consent-face" aria-hidden="true"></span>
+            </span>
+            <span class="lead__consent-text">
+              <span data-i18n="leadConsentBefore">Нажимая кнопку вы соглашаетесь на обработку </span>
+              <span class="lead__consent-underline" data-i18n="leadConsentPrivacy">персональных данных</span>
+              <span data-i18n="leadConsentAfter">.</span>
+            </span>
+          </label>
+          <button type="submit" class="lead__submit" id="leadSubmit" data-i18n="sendBtn">ОТПРАВИТЬ</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__top-left">
+        <p class="footer__kicker">РАБОТАЙТЕ С НАМИ</p>
+        <div class="footer__cols">
+          <div class="footer__block">
+            <p class="footer__block-title">СОЦ.СЕТИ</p>
+            <ul class="footer__links">
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">ВКОНТАКТЕ <span class="footer__arrow" aria-hidden="true">→</span></a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">ЮТЮБ <span class="footer__arrow" aria-hidden="true">→</span></a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">ТЕЛЕГРАМ <span class="footer__arrow" aria-hidden="true">→</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__block">
+            <p class="footer__block-title">АДРЕС</p>
+            <p class="footer__address">
+              САМАРА, САМАРСКАЯ ОБЛАСТЬ<br />
+              УЛИЦА КУЙБЫШЕВА, 118
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__top-right">
+        <a class="footer__email" href="mailto:brevno63@mail.ru">BREVNO63@MAIL.RU</a>
+        <a class="footer__phone" href="tel:+79091227788">+7(909)122-77-88</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <img
+        class="footer__logo-img"
+        src="images/BREVNO.svg"
+        alt="Brevno"
+        width="461"
+        height="76"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="footer__legal">
+        <span>ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
+        <a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
