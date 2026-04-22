@@ -18,6 +18,7 @@
     servicesHeading: "OUR SERVICES",
     prodLabel: "CYLINDERING PROCESS",
     prodHeading: "HOW WE PREPARE LOGS",
+    prodSwipeHint: "Swipe left — more steps",
     quote:
       "Our company offers clients unique, environmentally clean and economical housing that will last for years and suit everyone who values beauty and naturalness.",
     uspLabel: "ADVANTAGES",
@@ -555,12 +556,39 @@
       return Math.max(80, b.left - a.left);
     }
 
+    function updateSwipeHint() {
+      const hint = document.getElementById("productionSwipeHint");
+      if (!hint) return;
+      if (!window.matchMedia("(max-width: 768px)").matches) {
+        hint.setAttribute("hidden", "");
+        return;
+      }
+      const tol = 12;
+      const show = vp.scrollLeft <= tol && activeIdx === 0;
+      hint.toggleAttribute("hidden", !show);
+    }
+
+    function updateProductionEdge() {
+      const stepper = document.getElementById("productionStepper");
+      if (!stepper) return;
+      if (!window.matchMedia("(max-width: 768px)").matches) {
+        stepper.classList.remove("production-stepper--at-end");
+        return;
+      }
+      const ms = maxScroll();
+      const tol = 10;
+      const atEnd = ms <= tol || vp.scrollLeft >= ms - tol;
+      stepper.classList.toggle("production-stepper--at-end", atEnd);
+    }
+
     function applyActiveIndex(idx) {
       const last = slides.length - 1;
       activeIdx = Math.max(0, Math.min(idx, last));
       slides.forEach((s, i) => s.classList.toggle("is-active", i === activeIdx));
       updateArrows();
       syncProductionHero();
+      updateSwipeHint();
+      updateProductionEdge();
     }
 
     function setActiveFromScroll() {
@@ -584,18 +612,24 @@
       }
 
       const vpRect = vp.getBoundingClientRect();
-      const centerX = vpRect.left + vpRect.width / 2;
       let best = 0;
-      let bestDist = Infinity;
+      let bestVis = 0;
       slides.forEach((slide, i) => {
         const r = slide.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const d = Math.abs(cx - centerX);
-        if (d < bestDist) {
-          bestDist = d;
+        const w = Math.max(
+          0,
+          Math.min(r.right, vpRect.right) - Math.max(r.left, vpRect.left)
+        );
+        if (w > bestVis) {
+          bestVis = w;
           best = i;
         }
       });
+      if (bestVis <= 0) {
+        updateSwipeHint();
+        updateProductionEdge();
+        return;
+      }
       applyActiveIndex(best);
     }
 
@@ -626,6 +660,8 @@
       "resize",
       () => {
         setActiveFromScroll();
+        updateSwipeHint();
+        updateProductionEdge();
       },
       { passive: true }
     );
@@ -657,6 +693,8 @@
 
     requestAnimationFrame(() => {
       setActiveFromScroll();
+      updateSwipeHint();
+      updateProductionEdge();
     });
   })();
 

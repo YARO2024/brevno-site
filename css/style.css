@@ -848,6 +848,17 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   gap: clamp(8px, 2vw, 16px);
 }
 
+.production-stepper__viewport-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.production-stepper__hint {
+  display: none;
+}
+
 .production-stepper__arrow {
   flex-shrink: 0;
   align-self: center;
@@ -1002,15 +1013,84 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     scroll-padding-inline: var(--gutter);
   }
 
+  /* Подсказка + градиент справа: видно, что есть следующий этап */
+  .production-stepper__viewport::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(88px, 22vw);
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.97) 0%,
+      rgba(0, 0, 0, 0.45) 42%,
+      transparent 100%
+    );
+    transition: opacity 0.35s ease;
+  }
+
+  .production-stepper--at-end .production-stepper__viewport::after {
+    opacity: 0;
+  }
+
+  .production-stepper__hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0 0;
+    padding: 0 var(--gutter);
+    font-family: var(--font-display);
+    font-size: clamp(11px, 3vw, 12px);
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.52);
+  }
+
+  .production-stepper__hint[hidden] {
+    display: none !important;
+  }
+
+  .production-stepper__hint-arrow {
+    display: inline-flex;
+    gap: 1px;
+    animation: production-hint-nudge 1.2s ease-in-out infinite;
+  }
+
+  .production-stepper__hint-arrow::before,
+  .production-stepper__hint-arrow::after {
+    content: "›";
+    font-size: 1.15em;
+    font-weight: 300;
+    line-height: 1;
+    opacity: 0.9;
+  }
+
+  .production-stepper__hint-arrow::after {
+    margin-left: -0.12em;
+    opacity: 0.55;
+  }
+
   .production-stepper__track {
     padding: 8px var(--gutter) 0;
     min-height: 180px;
     gap: clamp(10px, 3vw, 20px);
   }
 
+  /* Узже полный слайд — справа «заглядывает» следующий (02, 03…) */
   .production-slide {
-    flex: 0 0 min(82vw, 420px);
-    scroll-snap-align: center;
+    flex: 0 0 calc(100vw - (var(--gutter) * 2) - 52px);
+    max-width: none;
+    scroll-snap-align: start;
+  }
+
+  .production-slide:not(.is-active) {
+    opacity: 0.62;
   }
 
   .production-slide__num {
@@ -1022,6 +1102,22 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     font-size: clamp(11px, 3.1vw, 13px);
     letter-spacing: 0.05em;
     line-height: 1.55;
+  }
+}
+
+@keyframes production-hint-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(7px);
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .production-stepper__hint-arrow {
+    animation: none;
   }
 }
 

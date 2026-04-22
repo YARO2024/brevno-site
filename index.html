@@ -269,6 +269,7 @@
           <button type="button" class="production-stepper__arrow production-stepper__arrow--prev" id="productionPrev" aria-controls="productionViewport" aria-label="Предыдущий этап">
             <span aria-hidden="true">&#8249;</span>
           </button>
+          <div class="production-stepper__viewport-col">
           <div class="production-stepper__viewport" id="productionViewport">
             <div class="production-stepper__track" id="productionTrack">
             <article class="production-slide is-active" data-step="1" data-hero-img="images/Оцилиндровка.png">
@@ -317,6 +318,11 @@
               </p>
             </article>
             </div>
+          </div>
+          <p class="production-stepper__hint" id="productionSwipeHint" hidden>
+            <span class="production-stepper__hint-arrow" aria-hidden="true"></span>
+            <span class="production-stepper__hint-text" data-i18n="prodSwipeHint">Смахните влево — ещё этапы</span>
+          </p>
           </div>
           <button type="button" class="production-stepper__arrow production-stepper__arrow--next" id="productionNext" aria-controls="productionViewport" aria-label="Следующий этап">
             <span aria-hidden="true">&#8250;</span>
