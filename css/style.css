@@ -93,6 +93,15 @@ a:hover {
   gap: 16px;
 }
 
+.header__trailing {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  grid-column: 3;
+  justify-self: end;
+}
+
 .logo {
   font-family: var(--font-display);
   font-size: clamp(1.125rem, 1.8vw, 1.375rem);
@@ -130,8 +139,69 @@ a:hover {
 }
 
 .header__inner .lang-toggle {
-  justify-self: end;
-  grid-column: 3;
+  flex-shrink: 0;
+}
+
+/* Кнопка меню: только узкие экраны (правила открытия — в @media ниже) */
+.nav-toggle {
+  display: none;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.nav-toggle__lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 20px;
+}
+
+.nav-toggle__lines > span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+body.is-nav-open .nav-toggle__lines span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+body.is-nav-open .nav-toggle__lines span:nth-child(2) {
+  opacity: 0;
+}
+
+body.is-nav-open .nav-toggle__lines span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-toggle__lines > span,
+  body.is-nav-open .nav-toggle__lines span:nth-child(1),
+  body.is-nav-open .nav-toggle__lines span:nth-child(3) {
+    transition: none;
+  }
 }
 
 .lang-toggle {
@@ -518,10 +588,10 @@ a:hover {
 
 .section--process .process__text {
   font-family: var(--font-display);
-  font-size: clamp(11px, 1.05vw, 13px);
+  font-size: clamp(13px, 0.22vw + 12.5px, 15px);
   font-weight: 400;
   letter-spacing: 0.03em;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .process__text {
@@ -529,7 +599,7 @@ a:hover {
   margin-top: auto;
   width: 100%;
   max-width: none;
-  font-size: 12px;
+  font-size: clamp(13px, 0.35vw + 12px, 15px);
   line-height: 1.45;
   color: var(--fg);
   overflow-wrap: break-word;
@@ -896,7 +966,7 @@ a:hover {
 .production-slide__text {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(11px, 1.15vw, 14px);
+  font-size: clamp(13px, 0.5vw + 12px, 15px);
   font-weight: 500;
   letter-spacing: 0.08em;
   line-height: 1.45;
@@ -941,6 +1011,13 @@ a:hover {
   border-top: var(--line-strong);
   padding: clamp(72px, 12vw, 140px) 0 clamp(64px, 10vw, 120px);
   min-height: min(100vh, 920px);
+}
+
+@media (max-width: 768px) {
+  .section--quote {
+    min-height: 0;
+    padding: clamp(48px, 10vw, 88px) 0 clamp(44px, 8vw, 80px);
+  }
 }
 
 .quote {
@@ -1674,7 +1751,7 @@ a:hover {
 
 .reviews-pick__name {
   font-family: var(--font-body);
-  font-size: clamp(11px, 2.2vw, 13px);
+  font-size: clamp(12px, 2.5vw, 14px);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: #fff;
@@ -2296,27 +2373,152 @@ a:hover {
   }
 }
 
-@media (max-width: 640px) {
+/* ——— Узкие экраны: выездное меню, типографика и отступы ——— */
+@media (max-width: 767px) {
+  :root {
+    --gutter: clamp(16px, 4.5vw, 28px);
+  }
+
+  .hero__header {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: var(--bg);
+    padding-bottom: 8px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
   .header__inner {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
   }
 
   .header__inner .logo {
     grid-column: 1;
-    grid-row: 1;
+    min-width: 0;
   }
 
-  .header__inner .lang-toggle {
+  .header__inner .header__trailing {
     grid-column: 2;
-    grid-row: 1;
+    flex-shrink: 0;
   }
 
-  .nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
+  .header__inner .nav {
+    position: fixed;
+    z-index: 400;
+    left: 0;
+    right: 0;
+    top: calc(env(safe-area-inset-top, 0px) + 56px);
+    bottom: 0;
+    grid-column: auto;
+    grid-row: auto;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    padding-top: 8px;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    padding: 8px 0 calc(24px + env(safe-area-inset-bottom, 0px));
+    background: rgba(0, 0, 0, 0.97);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    transform: translateX(100%);
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.28s ease, visibility 0.28s;
+  }
+
+  body.is-nav-open .header__inner .nav {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  body.is-nav-open {
+    overflow: hidden;
+  }
+
+  .header__inner .nav a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 12px max(var(--gutter), 20px);
+    font-size: clamp(15px, 3.8vw, 18px);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .header__inner .nav a:last-child {
+    border-bottom: none;
+  }
+
+  .section {
+    padding: clamp(40px, 7vw, 72px) 0;
+  }
+
+  .section__heading--process {
+    font-size: clamp(1.65rem, 6.5vw, 2.75rem);
+    max-width: 100%;
+  }
+
+  .process__cell--step {
+    padding: clamp(16px, 4vw, 22px);
+    min-height: 0;
+  }
+
+  .process__cell--photo-a,
+  .process__cell--photo-b {
+    min-height: 200px;
+  }
+
+  .services-acc__lead {
+    font-size: clamp(14px, 3.2vw, 16px);
+    max-width: 100%;
+  }
+
+  .production-slide {
+    flex: 0 0 min(92vw, 480px);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .header__inner .nav {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__top {
+    min-height: min(46vh, 520px);
+  }
+
+  .hero__img {
+    max-height: min(62vh, 720px);
+  }
+
+  .usp-card {
+    flex: 0 0 min(280px, 86vw);
+  }
+
+  .lead__label {
+    font-size: clamp(11px, 2.8vw, 13px);
+  }
+
+  .lead__consent {
+    font-size: clamp(13px, 3.2vw, 14px);
+  }
+
+  .reviews-featured {
+    padding: clamp(18px, 4vw, 26px) clamp(18px, 4vw, 28px);
+  }
+
+  .reviews-head__title {
+    font-size: clamp(1.75rem, 9vw, 3.5rem);
   }
 }

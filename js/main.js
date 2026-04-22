@@ -206,6 +206,58 @@
       if (key && dict[key] != null) el.setAttribute("placeholder", dict[key]);
     });
     syncReviewsUi();
+    syncNavToggleAria();
+  }
+
+  const navToggle = document.getElementById("navToggle");
+  const primaryNav = document.getElementById("primary-nav");
+
+  function syncNavToggleAria() {
+    if (!navToggle) return;
+    const open = document.body.classList.contains("is-nav-open");
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.setAttribute(
+      "aria-label",
+      lang === "en"
+        ? open
+          ? "Close menu"
+          : "Open menu"
+        : open
+          ? "Закрыть меню"
+          : "Открыть меню"
+    );
+  }
+
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener("click", () => {
+      document.body.classList.toggle("is-nav-open");
+      syncNavToggleAria();
+    });
+
+    primaryNav.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", () => {
+        document.body.classList.remove("is-nav-open");
+        syncNavToggleAria();
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.body.classList.remove("is-nav-open");
+        syncNavToggleAria();
+      }
+    });
+
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          document.body.classList.remove("is-nav-open");
+          syncNavToggleAria();
+        }
+      },
+      { passive: true }
+    );
   }
 
   if (langToggle) {

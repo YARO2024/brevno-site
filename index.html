@@ -16,12 +16,27 @@
       <header class="hero__header">
         <div class="header__inner container">
           <a class="logo logo--sm" href="#">BREVNO</a>
-          <nav class="nav" aria-label="Основное меню">
+          <nav class="nav" id="primary-nav" aria-label="Основное меню">
             <a href="#about">О нас</a>
             <a href="#advantages">Преимущества</a>
             <a href="#collection">Проекты</a>
           </nav>
-          <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
+          <div class="header__trailing">
+            <button
+              type="button"
+              class="nav-toggle"
+              id="navToggle"
+              aria-controls="primary-nav"
+              aria-expanded="false"
+              aria-label="Открыть меню"
+            >
+              <span class="nav-toggle__lines" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
             <span class="lang-toggle__track">
               <span class="lang-toggle__slot" id="slotEn" data-lang="en">
                 <span class="lang-toggle__ring" aria-hidden="true"></span>
@@ -33,6 +48,7 @@
               </span>
             </span>
           </button>
+          </div>
         </div>
       </header>
       <div class="hero__title-block container">
