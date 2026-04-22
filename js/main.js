@@ -230,6 +230,20 @@
   }
 
   if (navToggle && primaryNav) {
+    let navBackdrop = document.getElementById("navBackdrop");
+    if (!navBackdrop) {
+      navBackdrop = document.createElement("div");
+      navBackdrop.id = "navBackdrop";
+      navBackdrop.className = "nav-backdrop";
+      navBackdrop.setAttribute("aria-hidden", "true");
+      document.body.appendChild(navBackdrop);
+    }
+    navBackdrop.addEventListener("click", () => {
+      if (!document.body.classList.contains("is-nav-open")) return;
+      document.body.classList.remove("is-nav-open");
+      syncNavToggleAria();
+    });
+
     navToggle.addEventListener("click", () => {
       document.body.classList.toggle("is-nav-open");
       syncNavToggleAria();
