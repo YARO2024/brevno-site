@@ -2321,21 +2321,9 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     transform: translateX(50%);
   }
 
-  /* Стрелка как в десктопных стилях (правый верх блока героя); на широком экране скрыта */
+  /* Плавающая стрелка скрыта: на мобилке визуально дублирует подсказку у кружка и попадает к абзацу карточки */
   .reviews-hint-arrow--picks {
-    display: block;
-    right: clamp(10px, 3vw, 28px);
-    top: 24%;
-    bottom: auto;
-    width: clamp(26px, 7vw, 35px);
-    height: clamp(26px, 7vw, 35px);
-    transform: rotate(-16deg);
-    animation-name: reviews-hint-nudge;
-  }
-
-  .reviews-hint-arrow--picks img {
-    width: 100%;
-    height: 100%;
+    display: none !important;
   }
 
   .reviews-featured {
@@ -2392,22 +2380,10 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .section--reviews .reviews-pick:nth-child(3) {
     z-index: 2;
   }
-
-  .reviews-hint-arrow--picks {
-    display: block;
-    right: clamp(6px, 2.5vw, 20px);
-    top: 22%;
-    width: clamp(22px, 6vw, 30px);
-    height: clamp(22px, 6vw, 30px);
-    transform: rotate(-16deg);
-    animation-name: reviews-hint-nudge;
-  }
 }
 
-@media (min-width: 901px) {
-  .reviews-hint-arrow--picks {
-    display: none !important;
-  }
+.reviews-hint-arrow--picks {
+  display: none !important;
 }
 
 /* Lead — макет: колонка слева | вертикальная линия | форма */
