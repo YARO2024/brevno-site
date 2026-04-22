@@ -771,11 +771,17 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .services-acc__panel--rich {
     flex-direction: column;
     align-items: center;
+    gap: clamp(10px, 3vw, 18px);
   }
 
   .services-acc__kicker {
     text-align: center;
     max-width: none;
+    margin-bottom: 0;
+  }
+
+  .services-acc__panel {
+    padding: 0 0 clamp(14px, 2.5vw, 24px);
   }
 }
 
@@ -978,12 +984,24 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .production-stepper__track {
     padding-left: max(12px, calc(50vw - 44vw));
     padding-right: max(12px, calc(50vw - 44vw));
+    min-height: 180px;
   }
 
   .production-stepper__arrow {
     width: 40px;
     height: 40px;
     font-size: 1.35rem;
+  }
+
+  .production-slide__num {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+    margin-bottom: 8px;
+  }
+
+  .production-slide__text {
+    font-size: clamp(11px, 3.1vw, 13px);
+    letter-spacing: 0.05em;
+    line-height: 1.55;
   }
 }
 
