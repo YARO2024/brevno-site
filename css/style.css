@@ -89,6 +89,7 @@ a:hover {
 }
 
 .header__inner {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -187,8 +188,6 @@ a:hover {
   inset: 0;
   z-index: 518;
   background: rgba(0, 0, 0, 0.52);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -213,6 +212,16 @@ body.is-nav-open .nav-backdrop {
 
 .header__inner .lang-toggle {
   flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .header__inner .nav .lang-toggle {
+    position: absolute;
+    top: 50%;
+    right: calc(44px + 12px);
+    transform: translateY(-50%);
+    z-index: 3;
+  }
 }
 
 /* Кнопка меню: только узкие экраны (правила открытия — в @media ниже) */
@@ -970,7 +979,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   scroll-behavior: smooth;
   scroll-padding-inline: 0;
   cursor: default;
-  touch-action: pan-x pinch-zoom;
+  touch-action: pan-x pan-y pinch-zoom;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -1357,7 +1366,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   scrollbar-width: none;
@@ -3063,6 +3072,27 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .header__inner .nav .nav__links a:last-child {
     border-bottom: none;
+  }
+
+  .header__inner .nav .lang-toggle {
+    position: static;
+    transform: none;
+    align-self: center;
+    margin: 28px var(--gutter) calc(24px + env(safe-area-inset-bottom, 0px));
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .section--usp .usp-head {
+    gap: 8px;
+  }
+
+  .section--usp .divider--muted {
+    margin: 6px 0 10px;
+  }
+
+  .section--usp .usp-carousel-outer {
+    padding-top: 8px;
   }
 
   .section {
