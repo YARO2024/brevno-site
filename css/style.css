@@ -771,13 +771,20 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .services-acc__panel--rich {
     flex-direction: column;
     align-items: center;
-    gap: clamp(10px, 3vw, 18px);
+    justify-content: flex-start;
+    gap: clamp(8px, 2.5vw, 14px);
   }
 
   .services-acc__kicker {
+    flex: 0 1 auto;
     text-align: center;
     max-width: none;
     margin-bottom: 0;
+  }
+
+  .services-acc__ellipse {
+    flex-shrink: 0;
+    margin-top: 0;
   }
 
   .services-acc__panel {
@@ -981,16 +988,29 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     display: none;
   }
 
-  .production-stepper__track {
-    padding-left: max(12px, calc(50vw - 44vw));
-    padding-right: max(12px, calc(50vw - 44vw));
-    min-height: 180px;
+  .production-stepper__shell {
+    gap: 0;
   }
 
   .production-stepper__arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 1.35rem;
+    display: none;
+  }
+
+  .production-stepper__viewport {
+    flex: 1 1 auto;
+    min-width: 0;
+    scroll-padding-inline: var(--gutter);
+  }
+
+  .production-stepper__track {
+    padding: 8px var(--gutter) 0;
+    min-height: 180px;
+    gap: clamp(10px, 3vw, 20px);
+  }
+
+  .production-slide {
+    flex: 0 0 min(82vw, 420px);
+    scroll-snap-align: center;
   }
 
   .production-slide__num {
@@ -2156,10 +2176,6 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     padding: 14px 16px;
   }
 
-  .production-stepper__shell {
-    gap: 6px;
-  }
-
   .usp-carousel {
     gap: 6px;
   }
@@ -2480,10 +2496,6 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .services-acc__lead {
     font-size: clamp(14px, 3.2vw, 16px);
     max-width: 100%;
-  }
-
-  .production-slide {
-    flex: 0 0 min(92vw, 480px);
   }
 
   /* Hero: первый экран — заголовок, слова, крупное фото на всю оставшуюся высоту */
