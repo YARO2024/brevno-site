@@ -2225,13 +2225,14 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     grid-template-areas:
       "title title"
       "sideL sideR";
-    gap: clamp(22px, 5vw, 36px) 6px;
+    gap: clamp(22px, 5vw, 36px) clamp(4px, 1.5vw, 10px);
     align-items: stretch;
-    min-height: clamp(400px, 92vw, 540px);
+    min-height: clamp(360px, 92vw, 520px);
     max-width: min(100%, 520px);
     margin-inline: auto;
     overflow: visible;
-    padding-inline: 0;
+    padding-inline: clamp(4px, 2vw, 12px);
+    box-sizing: border-box;
   }
 
   .reviews-head__title {
@@ -2250,9 +2251,11 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     justify-self: stretch;
     align-self: stretch;
     max-width: none;
-    min-height: 0;
+    width: 100%;
+    min-height: clamp(260px, 72vw, 380px);
     height: 100%;
     overflow: visible;
+    margin: 0;
   }
 
   .reviews-hero__side--right {
@@ -2260,93 +2263,79 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     justify-self: stretch;
     align-self: stretch;
     max-width: none;
-    min-height: 0;
+    width: 100%;
+    min-height: clamp(260px, 72vw, 380px);
     height: 100%;
     overflow: visible;
+    margin: 0;
   }
 
-  /* Планшет/телефон: колонки не создают контекст позиционирования — % от .reviews-hero */
-  .reviews-hero__side--left,
-  .reviews-hero__side--right {
-    position: static;
-    min-height: clamp(280px, 78vw, 400px);
-    height: auto;
-    pointer-events: none;
-  }
-
-  .reviews-hero__side .reviews-pick {
-    pointer-events: auto;
-  }
-
-  /* Тарас выше слева, Иван Л. зеркально справа, Марина справа; остальные — дуга */
-  .section--reviews .reviews-hero .reviews-pick[data-review-index] {
-    top: auto;
-    right: auto;
-    bottom: auto;
+  /* Та же дуга, что на десктопе: координаты внутри своей колонки */
+  .reviews-hero__side--left .reviews-pick:nth-child(1) {
+    top: 2%;
+    left: 72%;
     transform: translateX(-50%);
   }
 
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="2"] {
-    top: 6%;
-    left: 24%;
-    z-index: 2;
+  .reviews-hero__side--left .reviews-pick:nth-child(2) {
+    top: 26%;
+    left: 6%;
+    transform: translateX(-50%);
   }
 
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="0"] {
-    top: 6%;
-    left: 76%;
-    z-index: 2;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="1"] {
-    top: 30%;
-    left: 71%;
-    z-index: 2;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="3"] {
-    top: 66%;
-    left: 22%;
-    z-index: 1;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="4"] {
-    top: 38%;
-    left: 38%;
-    z-index: 1;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="5"] {
+  .reviews-hero__side--left .reviews-pick:nth-child(3) {
     top: 50%;
-    left: 52%;
-    z-index: 1;
+    left: 62%;
+    transform: translateX(-50%);
   }
 
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="6"] {
-    top: 58%;
-    left: 76%;
-    z-index: 1;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="7"] {
-    top: 74%;
-    left: 46%;
-    z-index: 1;
-  }
-
-  .reviews-hint-arrow--picks {
-    right: 50%;
+  .reviews-hero__side--left .reviews-pick:nth-child(4) {
     top: auto;
-    width: 26px;
-    height: 26px;
-    bottom: clamp(6px, 2vw, 16px);
-    transform: translateX(50%) rotate(-16deg);
-    animation-name: reviews-hint-nudge-centered;
+    bottom: 2%;
+    left: 10%;
+    transform: translateX(-50%);
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(1) {
+    top: 2%;
+    right: 72%;
+    transform: translateX(50%);
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(2) {
+    top: 26%;
+    right: 6%;
+    transform: translateX(50%);
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(3) {
+    top: 50%;
+    right: 62%;
+    transform: translateX(50%);
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(4) {
+    top: auto;
+    bottom: 2%;
+    right: 10%;
+    transform: translateX(50%);
+  }
+
+  /* Стрелка как в десктопных стилях (правый верх блока героя); на широком экране скрыта */
+  .reviews-hint-arrow--picks {
+    display: block;
+    right: clamp(10px, 3vw, 28px);
+    top: 24%;
+    bottom: auto;
+    width: clamp(26px, 7vw, 35px);
+    height: clamp(26px, 7vw, 35px);
+    transform: rotate(-16deg);
+    animation-name: reviews-hint-nudge;
   }
 
   .reviews-hint-arrow--picks img {
-    width: 26px;
-    height: 26px;
+    width: 100%;
+    height: 100%;
   }
 
   .reviews-featured {
@@ -2354,23 +2343,23 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   }
 }
 
-@media (max-width: 900px) and (hover: hover) {
-  .section--reviews .reviews-hero .reviews-pick[data-review-index]:hover {
-    transform: translateX(-50%) scale(1.06);
-  }
-}
-
 @media (max-width: 640px) {
   .reviews-hero {
-    gap: clamp(18px, 4vw, 26px) 4px;
-    min-height: clamp(360px, 118vw, 500px);
+    gap: clamp(18px, 4vw, 26px) clamp(2px, 1vw, 8px);
+    min-height: clamp(340px, 118vw, 480px);
     max-width: 100%;
+    padding-inline: clamp(2px, 1.5vw, 8px);
   }
 
   .reviews-head__title {
     padding-right: 6px;
     font-size: clamp(3rem, 14vw, 6.25rem);
     line-height: 1.02;
+  }
+
+  .reviews-hero__side--left,
+  .reviews-hero__side--right {
+    min-height: clamp(240px, 68vw, 360px);
   }
 
   .section--reviews .reviews-pick__fig {
@@ -2389,7 +2378,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .section--reviews .reviews-pick__name {
     font-size: 10px;
-    max-width: 6.5rem;
+    max-width: 5.5rem;
     line-height: 1.25;
     word-break: break-word;
   }
@@ -2399,65 +2388,26 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     z-index: 1;
   }
 
-  /* Телефон: плотнее, Тарас/Иван выше, Марина у правого края */
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="2"] {
-    top: 4%;
-    left: 22%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="0"] {
-    top: 4%;
-    left: 78%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="1"] {
-    top: 27%;
-    left: 74%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="3"] {
-    top: 64%;
-    left: 20%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="4"] {
-    top: 36%;
-    left: 36%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="5"] {
-    top: 48%;
-    left: 50%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="6"] {
-    top: 56%;
-    left: 78%;
-  }
-
-  .section--reviews .reviews-hero .reviews-pick[data-review-index="7"] {
-    top: 72%;
-    left: 44%;
+  .section--reviews .reviews-pick:nth-child(2),
+  .section--reviews .reviews-pick:nth-child(3) {
+    z-index: 2;
   }
 
   .reviews-hint-arrow--picks {
-    right: 50%;
-    top: auto;
-    width: 22px;
-    height: 22px;
-    bottom: clamp(4px, 1.5vw, 12px);
-    transform: translateX(50%) rotate(-16deg);
-    animation-name: reviews-hint-nudge-centered;
-  }
-
-  .reviews-hint-arrow--picks img {
-    width: 22px;
-    height: 22px;
+    display: block;
+    right: clamp(6px, 2.5vw, 20px);
+    top: 22%;
+    width: clamp(22px, 6vw, 30px);
+    height: clamp(22px, 6vw, 30px);
+    transform: rotate(-16deg);
+    animation-name: reviews-hint-nudge;
   }
 }
 
-.reviews-hint-arrow--picks {
-  display: none !important;
+@media (min-width: 901px) {
+  .reviews-hint-arrow--picks {
+    display: none !important;
+  }
 }
 
 /* Lead — макет: колонка слева | вертикальная линия | форма */
