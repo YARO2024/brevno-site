@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Brevno — дома из бруса и оцилиндрованного бревна</title>
   <!-- Макет Figma: https://www.figma.com/design/3cBoiMbZwjkKeHGmlboH6O/ node19433:2461 -->
+  <!-- Кэш CSS/JS: при деплое поменяйте ?v= на то же новое значение в двух местах (ниже link + script). -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20260423" />
 </head>
 <body>
   <section class="hero">
@@ -17,9 +18,32 @@
         <div class="header__inner container">
           <a class="logo logo--sm" href="#">BREVNO</a>
           <nav class="nav" id="primary-nav" aria-label="Основное меню">
-            <a href="#about">О нас</a>
-            <a href="#advantages">Преимущества</a>
-            <a href="#collection">Проекты</a>
+            <button type="button" class="nav__close" id="navClose" aria-label="Закрыть меню">
+              <span class="nav__close-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+              </span>
+            </button>
+            <div class="nav__links">
+              <a href="#about">О нас</a>
+              <a href="#advantages">Преимущества</a>
+              <a href="#collection">Проекты</a>
+            </div>
+            <div class="nav__drawer-foot">
+              <p class="nav__lang-hint" data-i18n="navLangHint">Язык</p>
+              <button type="button" class="lang-toggle nav__lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
+                <span class="lang-toggle__track">
+                  <span class="lang-toggle__slot" id="slotEn" data-lang="en">
+                    <span class="lang-toggle__ring" aria-hidden="true"></span>
+                    <span class="lang-toggle__label">En</span>
+                  </span>
+                  <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
+                    <span class="lang-toggle__ring" aria-hidden="true"></span>
+                    <span class="lang-toggle__label">Ru</span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </nav>
           <div class="header__trailing">
             <button
@@ -36,18 +60,6 @@
                 <span></span>
               </span>
             </button>
-            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
-            <span class="lang-toggle__track">
-              <span class="lang-toggle__slot" id="slotEn" data-lang="en">
-                <span class="lang-toggle__ring" aria-hidden="true"></span>
-                <span class="lang-toggle__label">En</span>
-              </span>
-              <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
-                <span class="lang-toggle__ring" aria-hidden="true"></span>
-                <span class="lang-toggle__label">Ru</span>
-              </span>
-            </span>
-          </button>
           </div>
         </div>
       </header>
@@ -839,6 +851,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260423"></script>
 </body>
 </html>

@@ -125,8 +125,11 @@ a:hover {
 
 .nav {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   justify-content: center;
-  gap: clamp(16px, 3vw, 40px);
+  gap: clamp(20px, 3vw, 36px);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 500;
@@ -136,15 +139,69 @@ a:hover {
   grid-column: 2;
 }
 
-.nav a {
+.nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 40px);
+}
+
+.nav__links a {
   cursor: pointer;
+}
+
+.nav__close {
+  display: none;
+}
+
+.nav__close-icon {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.nav__close-icon span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  margin-top: -1px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.nav__close-icon span:first-child {
+  transform: rotate(45deg);
+}
+
+.nav__close-icon span:last-child {
+  transform: rotate(-45deg);
+}
+
+.nav__drawer-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__lang-hint {
+  display: none;
+  margin: 0;
+}
+
+.nav__lang-toggle .lang-toggle__track {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 /* Затемнение фона при открытом мобильном меню (элемент создаётся в main.js) */
 .nav-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 410;
+  z-index: 518;
   background: rgba(0, 0, 0, 0.52);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -168,10 +225,6 @@ body.is-nav-open .nav-backdrop {
 
 .header__inner .logo {
   justify-self: start;
-}
-
-.header__inner .lang-toggle {
-  flex-shrink: 0;
 }
 
 /* Кнопка меню: только узкие экраны (правила открытия — в @media ниже) */
@@ -2559,58 +2612,135 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .header__inner .nav {
     position: fixed;
-    z-index: 420;
-    left: auto;
+    z-index: 530;
+    inset: 0;
+    left: 0;
     right: 0;
-    top: calc(env(safe-area-inset-top, 0px) + 52px);
+    top: 0;
     bottom: 0;
-    width: min(300px, 88vw);
+    width: 100%;
+    max-width: none;
     grid-column: auto;
     grid-row: auto;
-    justify-content: flex-start;
-    align-items: stretch;
     flex-direction: column;
     flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 0;
     margin: 0;
-    padding: 16px 0 calc(28px + env(safe-area-inset-bottom, 0px));
-    background: rgba(14, 14, 14, 0.98);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 18px 0 0 0;
-    box-shadow: -16px 0 56px rgba(0, 0, 0, 0.55);
+    padding: 0;
+    background: linear-gradient(165deg, #0c0c0c 0%, #050505 45%, #000 100%);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     transform: translateX(100%);
     visibility: hidden;
+    pointer-events: none;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1), visibility 0.4s,
-      box-shadow 0.4s ease;
+    transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1), visibility 0.42s;
   }
 
   body.is-nav-open .header__inner .nav {
     transform: translateX(0);
     visibility: visible;
+    pointer-events: auto;
   }
 
   body.is-nav-open {
     overflow: hidden;
   }
 
-  .header__inner .nav a {
+  .nav__close {
     display: flex;
     align-items: center;
-    min-height: 48px;
-    padding: 12px max(var(--gutter), 20px);
-    font-size: clamp(15px, 3.8vw, 18px);
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    align-self: flex-end;
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    margin: calc(10px + env(safe-area-inset-top, 0px)) 10px 8px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--fg);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
 
-  .header__inner .nav a:last-child {
+  .nav__close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.55);
+  }
+
+  .nav__close:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  .header__inner .nav .nav__links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0 24px;
+  }
+
+  .header__inner .nav .nav__links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px max(var(--gutter), 20px);
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+  }
+
+  .header__inner .nav .nav__links a:last-child {
     border-bottom: none;
+  }
+
+  .nav__drawer-foot {
+    flex-direction: column;
+    margin-top: auto;
+    padding: 28px var(--gutter) calc(28px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .nav__lang-hint {
+    display: block;
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .nav__lang-toggle {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .nav__lang-toggle .lang-toggle__track {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .nav__lang-toggle .lang-toggle__slot {
+    flex: 1;
+    min-width: 0;
   }
 
   .section {

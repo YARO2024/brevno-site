@@ -28,6 +28,7 @@
     teamHeading: "OUR SPECIALISTS",
     catLabel: "PROJECTS",
     catHeading: "OUR COLLECTION",
+    navLangHint: "Language",
     reviewsLine1: "50+",
     reviewsLine2: "HAPPY",
     reviewsLine3: "CLIENTS",
@@ -208,6 +209,7 @@
     });
     syncReviewsUi();
     syncNavToggleAria();
+    syncNavCloseAria();
   }
 
   const navToggle = document.getElementById("navToggle");
@@ -229,6 +231,15 @@
     );
   }
 
+  function syncNavCloseAria() {
+    const btn = document.getElementById("navClose");
+    if (!btn) return;
+    btn.setAttribute(
+      "aria-label",
+      lang === "en" ? "Close menu" : "Закрыть меню"
+    );
+  }
+
   if (navToggle && primaryNav) {
     let navBackdrop = document.getElementById("navBackdrop");
     if (!navBackdrop) {
@@ -246,6 +257,11 @@
 
     navToggle.addEventListener("click", () => {
       document.body.classList.toggle("is-nav-open");
+      syncNavToggleAria();
+    });
+
+    document.getElementById("navClose")?.addEventListener("click", () => {
+      document.body.classList.remove("is-nav-open");
       syncNavToggleAria();
     });
 
@@ -273,6 +289,8 @@
       },
       { passive: true }
     );
+
+    syncNavCloseAria();
   }
 
   if (langToggle) {
