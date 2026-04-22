@@ -1471,6 +1471,19 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     height: 40px;
     font-size: 1.35rem;
   }
+
+  .section--usp .usp-card__img {
+    margin-bottom: 8px;
+  }
+
+  .section--usp .usp-card__title {
+    margin-bottom: 6px;
+  }
+
+  .section--usp .usp-carousel__track {
+    padding-top: 0;
+    padding-bottom: 8px;
+  }
 }
 
 /* Team */
@@ -1846,7 +1859,9 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
 .reviews-cloud {
   position: relative;
-  padding: clamp(24px, 4vw, 40px) 0 clamp(32px, 5vw, 56px);
+  /* Только вертикаль — горизонталь остаётся от .container (иначе «0» в shorthand сбрасывает боковые поля) */
+  padding-top: clamp(24px, 4vw, 40px);
+  padding-bottom: clamp(32px, 5vw, 56px);
 }
 
 .reviews-layout {
@@ -2174,8 +2189,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     max-width: min(100%, 520px);
     margin-inline: auto;
     overflow: hidden;
-    padding-inline: max(0px, env(safe-area-inset-left))
-      max(0px, env(safe-area-inset-right));
+    padding-inline: 0;
   }
 
   .reviews-head__title {
@@ -2360,7 +2374,8 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
   gap: clamp(28px, 5vw, 72px);
   align-items: start;
-  padding: clamp(48px, 8vw, 120px) 0 clamp(56px, 9vw, 120px);
+  padding-top: clamp(48px, 8vw, 120px);
+  padding-bottom: clamp(56px, 9vw, 120px);
 }
 
 .lead__col--left {
@@ -2601,7 +2616,8 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   .lead {
     grid-template-columns: 1fr;
     gap: clamp(28px, 5vw, 40px);
-    padding: clamp(40px, 8vw, 72px) 0;
+    padding-top: clamp(40px, 8vw, 72px);
+    padding-bottom: clamp(40px, 8vw, 72px);
   }
 
   .lead__divider {
@@ -3008,7 +3024,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .header__inner .nav {
     position: fixed;
-    z-index: 530;
+    z-index: 9999;
     inset: 0;
     left: 0;
     right: 0;
@@ -3046,6 +3062,12 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     transform: translate3d(0, 0, 0);
     visibility: visible;
     pointer-events: auto;
+  }
+
+  /* Бургер и логотип в потоке идут после nav в DOM — перекрывают слой меню и крадут клики */
+  body.is-nav-open .header__inner .header__trailing,
+  body.is-nav-open .header__inner .logo {
+    pointer-events: none;
   }
 
   body.is-nav-open {
