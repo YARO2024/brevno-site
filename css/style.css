@@ -2230,7 +2230,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     min-height: clamp(400px, 92vw, 540px);
     max-width: min(100%, 520px);
     margin-inline: auto;
-    overflow: hidden;
+    overflow: visible;
     padding-inline: 0;
   }
 
@@ -2265,47 +2265,73 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     overflow: visible;
   }
 
-  /* Кружки ближе к центру — не уезжают к краям колонок */
-  .reviews-hero__side--left .reviews-pick:nth-child(1) {
-    top: 12%;
-    left: 62%;
+  /* Планшет/телефон: колонки не создают контекст позиционирования — % от .reviews-hero */
+  .reviews-hero__side--left,
+  .reviews-hero__side--right {
+    position: static;
+    min-height: clamp(280px, 78vw, 400px);
+    height: auto;
+    pointer-events: none;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(2) {
-    top: 36%;
-    left: 28%;
+  .reviews-hero__side .reviews-pick {
+    pointer-events: auto;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(3) {
-    top: 60%;
-    left: 58%;
-  }
-
-  .reviews-hero__side--left .reviews-pick:nth-child(4) {
+  /* Тарас выше слева, Иван Л. зеркально справа, Марина справа; остальные — дуга */
+  .section--reviews .reviews-hero .reviews-pick[data-review-index] {
     top: auto;
-    bottom: 10%;
-    left: 26%;
+    right: auto;
+    bottom: auto;
+    transform: translateX(-50%);
   }
 
-  .reviews-hero__side--right .reviews-pick:nth-child(1) {
-    top: 12%;
-    right: 62%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="2"] {
+    top: 6%;
+    left: 24%;
+    z-index: 2;
   }
 
-  .reviews-hero__side--right .reviews-pick:nth-child(2) {
-    top: 36%;
-    right: 28%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="0"] {
+    top: 6%;
+    left: 76%;
+    z-index: 2;
   }
 
-  .reviews-hero__side--right .reviews-pick:nth-child(3) {
-    top: 60%;
-    right: 58%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="1"] {
+    top: 30%;
+    left: 71%;
+    z-index: 2;
   }
 
-  .reviews-hero__side--right .reviews-pick:nth-child(4) {
-    top: auto;
-    bottom: 10%;
-    right: 26%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="3"] {
+    top: 66%;
+    left: 22%;
+    z-index: 1;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="4"] {
+    top: 38%;
+    left: 38%;
+    z-index: 1;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="5"] {
+    top: 50%;
+    left: 52%;
+    z-index: 1;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="6"] {
+    top: 58%;
+    left: 76%;
+    z-index: 1;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="7"] {
+    top: 74%;
+    left: 46%;
+    z-index: 1;
   }
 
   .reviews-hint-arrow--picks {
@@ -2325,6 +2351,12 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .reviews-featured {
     border-radius: clamp(24px, 5vw, 40px);
+  }
+}
+
+@media (max-width: 900px) and (hover: hover) {
+  .section--reviews .reviews-hero .reviews-pick[data-review-index]:hover {
+    transform: translateX(-50%) scale(1.06);
   }
 }
 
@@ -2367,49 +2399,45 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     z-index: 1;
   }
 
-  .section--reviews .reviews-pick:nth-child(2),
-  .section--reviews .reviews-pick:nth-child(3) {
-    z-index: 2;
+  /* Телефон: плотнее, Тарас/Иван выше, Марина у правого края */
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="2"] {
+    top: 4%;
+    left: 22%;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(1) {
-    top: 14%;
-    left: 52%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="0"] {
+    top: 4%;
+    left: 78%;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(2) {
-    top: 38%;
-    left: 30%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="1"] {
+    top: 27%;
+    left: 74%;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(3) {
-    top: 62%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="3"] {
+    top: 64%;
+    left: 20%;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="4"] {
+    top: 36%;
+    left: 36%;
+  }
+
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="5"] {
+    top: 48%;
     left: 50%;
   }
 
-  .reviews-hero__side--left .reviews-pick:nth-child(4) {
-    bottom: 8%;
-    left: 28%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="6"] {
+    top: 56%;
+    left: 78%;
   }
 
-  .reviews-hero__side--right .reviews-pick:nth-child(1) {
-    top: 14%;
-    right: 52%;
-  }
-
-  .reviews-hero__side--right .reviews-pick:nth-child(2) {
-    top: 38%;
-    right: 30%;
-  }
-
-  .reviews-hero__side--right .reviews-pick:nth-child(3) {
-    top: 62%;
-    right: 50%;
-  }
-
-  .reviews-hero__side--right .reviews-pick:nth-child(4) {
-    bottom: 8%;
-    right: 28%;
+  .section--reviews .reviews-hero .reviews-pick[data-review-index="7"] {
+    top: 72%;
+    left: 44%;
   }
 
   .reviews-hint-arrow--picks {
