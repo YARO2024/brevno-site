@@ -83,21 +83,21 @@
       },
     },
     {
-      img: "images/Ellipse%2051.png",
+      img: "images/Ellipse%2052.png",
       shortName: { ru: "Марина М.", en: "Marina M." },
       nameFeatured: { ru: "Марина Миронова", en: "Marina Mironova" },
       quote: {
-        ru: "Интерьер совпал с визуализацией, а сроки сметы не разъехались. Спасибо за спокойную коммуникацию на всех этапах.",
-        en: "The interior matched the visuals and the estimate stayed on track. Thanks for clear communication at every step.",
+        ru: "Материал ровный, маркировка брёвен понятная — сборка на участке прошла без лишних вопросов к бригаде.",
+        en: "Even logs, clear marking — on-site assembly went smoothly without endless questions for the crew.",
       },
     },
     {
-      img: "images/Ellipse%2052.png",
+      img: "images/Ellipse%2051.png",
       shortName: { ru: "Тарас К.", en: "Taras K." },
       nameFeatured: { ru: "Тарас Ковалёв", en: "Taras Kovalyov" },
       quote: {
-        ru: "Материал ровный, маркировка брёвен понятная — сборка на участке прошла без лишних вопросов к бригаде.",
-        en: "Even logs, clear marking — on-site assembly went smoothly without endless questions for the crew.",
+        ru: "Интерьер совпал с визуализацией, а сроки сметы не разъехались. Спасибо за спокойную коммуникацию на всех этапах.",
+        en: "The interior matched the visuals and the estimate stayed on track. Thanks for clear communication at every step.",
       },
     },
     {
