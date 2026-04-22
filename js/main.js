@@ -28,7 +28,6 @@
     teamHeading: "OUR SPECIALISTS",
     catLabel: "PROJECTS",
     catHeading: "OUR COLLECTION",
-    navLangHint: "Language",
     reviewsLine1: "50+",
     reviewsLine2: "HAPPY",
     reviewsLine3: "CLIENTS",

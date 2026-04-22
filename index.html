@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260423" />
+  <link rel="stylesheet" href="css/style.css?v=20260426" />
 </head>
 <body>
   <section class="hero">
@@ -29,21 +29,6 @@
               <a href="#advantages">Преимущества</a>
               <a href="#collection">Проекты</a>
             </div>
-            <div class="nav__drawer-foot">
-              <p class="nav__lang-hint" data-i18n="navLangHint">Язык</p>
-              <button type="button" class="lang-toggle nav__lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
-                <span class="lang-toggle__track">
-                  <span class="lang-toggle__slot" id="slotEn" data-lang="en">
-                    <span class="lang-toggle__ring" aria-hidden="true"></span>
-                    <span class="lang-toggle__label">En</span>
-                  </span>
-                  <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
-                    <span class="lang-toggle__ring" aria-hidden="true"></span>
-                    <span class="lang-toggle__label">Ru</span>
-                  </span>
-                </span>
-              </button>
-            </div>
           </nav>
           <div class="header__trailing">
             <button
@@ -58,6 +43,18 @@
                 <span></span>
                 <span></span>
                 <span></span>
+              </span>
+            </button>
+            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
+              <span class="lang-toggle__track">
+                <span class="lang-toggle__slot" id="slotEn" data-lang="en">
+                  <span class="lang-toggle__ring" aria-hidden="true"></span>
+                  <span class="lang-toggle__label">En</span>
+                </span>
+                <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
+                  <span class="lang-toggle__ring" aria-hidden="true"></span>
+                  <span class="lang-toggle__label">Ru</span>
+                </span>
               </span>
             </button>
           </div>
@@ -668,6 +665,9 @@
             <span class="reviews-head__line" data-i18n="reviewsLine1">50+</span>
             <span class="reviews-head__line" data-i18n="reviewsLine2">СЧАСТЛИВЫХ</span>
             <span class="reviews-head__line" data-i18n="reviewsLine3">КЛИЕНТОВ</span>
+            <span class="reviews-hint-arrow" aria-hidden="true">
+              <img src="images/Vector.svg" width="35" height="35" alt="" decoding="async" />
+            </span>
           </h2>
 
           <div class="reviews-hero__side reviews-hero__side--right">
@@ -695,10 +695,6 @@
               </span>
               <span class="reviews-pick__name">Павел Д.</span>
             </button>
-          </div>
-
-          <div class="reviews-hint-arrow" aria-hidden="true">
-            <img src="images/Vector.svg" width="35" height="35" alt="" decoding="async" />
           </div>
         </div>
         <div class="reviews-featured" id="reviewsFeatured" role="region" aria-live="polite" aria-label="Выбранный отзыв">
@@ -791,7 +787,13 @@
             </span>
             <span class="lead__consent-text">
               <span data-i18n="leadConsentBefore">Нажимая кнопку вы соглашаетесь на обработку </span>
-              <span class="lead__consent-underline" data-i18n="leadConsentPrivacy">персональных данных</span>
+              <a
+                href="privacy.html"
+                class="lead__consent-link lead__consent-underline"
+                data-i18n="leadConsentPrivacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                >персональных данных</a>
               <span data-i18n="leadConsentAfter">.</span>
             </span>
           </label>
@@ -846,11 +848,11 @@
       />
       <div class="footer__legal">
         <span>ВСЕ ПРАВА ЗАЩИЩЕНЫ</span>
-        <a href="#">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+        <a href="privacy.html">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260423"></script>
+  <script src="js/main.js?v=20260426"></script>
 </body>
 </html>
