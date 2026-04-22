@@ -2119,6 +2119,10 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 }
 
 @media (max-width: 900px) {
+  .reviews-cloud {
+    overflow-x: hidden;
+  }
+
   .reviews-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2130,11 +2134,17 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     min-height: 0;
     max-width: min(100%, 520px);
     margin-inline: auto;
+    overflow: hidden;
+    padding-inline: max(0px, env(safe-area-inset-left))
+      max(0px, env(safe-area-inset-right));
   }
 
   .reviews-head__title {
     grid-area: title;
     width: 100%;
+    box-sizing: border-box;
+    padding-left: 6px;
+    padding-right: 40px;
   }
 
   .reviews-hero__side--left {
@@ -2142,6 +2152,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     justify-self: stretch;
     max-width: none;
     min-height: clamp(200px, 52vw, 260px);
+    overflow: hidden;
   }
 
   .reviews-hero__side--right {
@@ -2149,6 +2160,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     justify-self: stretch;
     max-width: none;
     min-height: clamp(200px, 52vw, 260px);
+    overflow: hidden;
   }
 
   /* Узкая, но всё ещё «дугообразная» расстановка */
@@ -2193,19 +2205,102 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   }
 
   .reviews-hint-arrow {
-    right: -4%;
-    top: 62%;
-    width: 28px;
-    height: 28px;
+    right: 8px;
+    top: 58%;
+    width: 26px;
+    height: 26px;
   }
 
   .reviews-hint-arrow img {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
 
   .reviews-featured {
     border-radius: clamp(24px, 5vw, 40px);
+  }
+}
+
+@media (max-width: 640px) {
+  .reviews-hero {
+    gap: 12px 6px;
+    max-width: 100%;
+  }
+
+  .reviews-head__title {
+    padding-right: 36px;
+    font-size: clamp(1.65rem, 8.5vw, 3.25rem);
+  }
+
+  .reviews-hero__side--left,
+  .reviews-hero__side--right {
+    min-height: clamp(168px, 46vw, 230px);
+  }
+
+  .section--reviews .reviews-pick__fig {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+  }
+
+  .section--reviews .reviews-pick__name {
+    font-size: 10px;
+    max-width: 5.5rem;
+    line-height: 1.2;
+  }
+
+  .section--reviews .reviews-pick {
+    gap: 4px;
+  }
+
+  /* Ближе к центру — меньше вылезают за колонку */
+  .reviews-hero__side--left .reviews-pick:nth-child(1) {
+    left: 62%;
+  }
+
+  .reviews-hero__side--left .reviews-pick:nth-child(2) {
+    top: 30%;
+    left: 18%;
+  }
+
+  .reviews-hero__side--left .reviews-pick:nth-child(3) {
+    top: 52%;
+    left: 58%;
+  }
+
+  .reviews-hero__side--left .reviews-pick:nth-child(4) {
+    left: 14%;
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(1) {
+    right: 62%;
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(2) {
+    top: 30%;
+    right: 18%;
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(3) {
+    top: 52%;
+    right: 58%;
+  }
+
+  .reviews-hero__side--right .reviews-pick:nth-child(4) {
+    right: 14%;
+  }
+
+  .reviews-hint-arrow {
+    right: 4px;
+    top: 62%;
+    width: 22px;
+    height: 22px;
+  }
+
+  .reviews-hint-arrow img {
+    width: 22px;
+    height: 22px;
   }
 }
 
@@ -2847,19 +2942,28 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     display: inline-flex;
   }
 
+  /* Flex: фиксированное меню вне потока — в ряд только логотип и блок справа (язык + бургер) */
   .header__inner {
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
+    flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
   }
 
   .header__inner .logo {
-    grid-column: 1;
+    grid-column: unset;
+    flex: 1;
     min-width: 0;
   }
 
   .header__inner .header__trailing {
-    grid-column: 2;
+    grid-column: unset;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
     flex-shrink: 0;
   }
 
@@ -2873,8 +2977,8 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     bottom: 0;
     width: 100%;
     max-width: none;
-    grid-column: auto;
-    grid-row: auto;
+    grid-column: unset;
+    grid-row: unset;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: stretch;

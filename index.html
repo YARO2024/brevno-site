@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=20260426" />
+  <link rel="stylesheet" href="css/style.css?v=20260427" />
 </head>
 <body>
   <section class="hero">
@@ -31,6 +31,18 @@
             </div>
           </nav>
           <div class="header__trailing">
+            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
+              <span class="lang-toggle__track">
+                <span class="lang-toggle__slot" id="slotEn" data-lang="en">
+                  <span class="lang-toggle__ring" aria-hidden="true"></span>
+                  <span class="lang-toggle__label">En</span>
+                </span>
+                <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
+                  <span class="lang-toggle__ring" aria-hidden="true"></span>
+                  <span class="lang-toggle__label">Ru</span>
+                </span>
+              </span>
+            </button>
             <button
               type="button"
               class="nav-toggle"
@@ -43,18 +55,6 @@
                 <span></span>
                 <span></span>
                 <span></span>
-              </span>
-            </button>
-            <button type="button" class="lang-toggle" id="langToggle" aria-pressed="false" aria-label="Переключить язык">
-              <span class="lang-toggle__track">
-                <span class="lang-toggle__slot" id="slotEn" data-lang="en">
-                  <span class="lang-toggle__ring" aria-hidden="true"></span>
-                  <span class="lang-toggle__label">En</span>
-                </span>
-                <span class="lang-toggle__slot is-active" id="slotRu" data-lang="ru">
-                  <span class="lang-toggle__ring" aria-hidden="true"></span>
-                  <span class="lang-toggle__label">Ru</span>
-                </span>
               </span>
             </button>
           </div>
@@ -853,6 +853,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260426"></script>
+  <script src="js/main.js?v=20260427"></script>
 </body>
 </html>
