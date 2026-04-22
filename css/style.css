@@ -206,6 +206,15 @@ body.is-nav-open .nav-backdrop {
   }
 }
 
+/* Полноэкранное меню само перекрывает страницу — оверлей не нужен и на iOS даёт «мутность» */
+@media (max-width: 767px) {
+  .nav-backdrop {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
 .header__inner .logo {
   justify-self: start;
 }
@@ -979,7 +988,8 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   scroll-behavior: smooth;
   scroll-padding-inline: 0;
   cursor: default;
-  touch-action: pan-x pan-y pinch-zoom;
+  touch-action: auto;
+  overscroll-behavior-y: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -1051,6 +1061,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   text-align: center;
   margin-bottom: 12px;
   color: var(--fg);
+  touch-action: pan-y;
 }
 
 .production-slide__text {
@@ -1063,6 +1074,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   text-transform: uppercase;
   text-align: center;
   color: rgba(255, 255, 255, 0.92);
+  touch-action: pan-y;
 }
 
 @media (max-width: 768px) {
@@ -1366,7 +1378,9 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  touch-action: pan-x pan-y;
+  touch-action: auto;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   scrollbar-width: none;
@@ -1398,6 +1412,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   overflow: hidden;
   margin-bottom: 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  touch-action: pan-y;
 }
 
 .usp-card__img img {
@@ -1405,6 +1420,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   height: 100%;
   object-fit: cover;
   filter: grayscale(0.25) contrast(1.02);
+  touch-action: pan-y;
 }
 
 .usp-card__title {
@@ -1434,6 +1450,20 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .usp-head__title {
     max-width: 100%;
+  }
+
+  /* Иначе flex-grow:1 в колонке может раздувать блок и отдалять карусель */
+  .section--usp .usp-head__title {
+    flex: 0 1 auto;
+  }
+
+  .section--usp .divider--muted {
+    margin: 4px 0 8px;
+  }
+
+  .section--usp .usp-carousel-outer {
+    padding-top: 0;
+    padding-bottom: clamp(32px, 7vw, 72px);
   }
 
   .usp-carousel__arrow {
@@ -2999,7 +3029,10 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    transform: translateX(100%);
+    transform: translate3d(100%, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
     visibility: hidden;
     pointer-events: none;
     overflow-x: hidden;
@@ -3010,7 +3043,7 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
   }
 
   body.is-nav-open .header__inner .nav {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
     visibility: visible;
     pointer-events: auto;
   }
@@ -3085,14 +3118,6 @@ body.is-nav-open .nav-toggle__lines span:nth-child(3) {
 
   .section--usp .usp-head {
     gap: 8px;
-  }
-
-  .section--usp .divider--muted {
-    margin: 6px 0 10px;
-  }
-
-  .section--usp .usp-carousel-outer {
-    padding-top: 8px;
   }
 
   .section {
